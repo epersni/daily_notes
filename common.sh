@@ -1,7 +1,7 @@
 COMMON_TODAY_DATE=$(date +%G-%B-%d)
 COMMON_YESTER_DAY=$(date +%G-%B-%d --date="1 days ago")
 COMMON_NOTES_EXTENSION=note
-COMMON_NOTES_DIR=/home/${USER}/notes/notes
+COMMON_NOTES_DIR=$(dirname "$(realpath $0)")/notes
 
 create_symlink_from_file()
 {

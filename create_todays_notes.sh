@@ -2,11 +2,15 @@
 
 source common.sh
 
-NOTES_DIR=notes
-if ! [ -d ${NOTES_DIR} ]; then
-  mkdir ${NOTES_DIR}
+FILE=${COMMON_NOTES_DIR}/${COMMON_TODAY_DATE}.${COMMON_NOTES_EXTENSION}
+
+if ! [ -d ${COMMON_NOTES_DIR} ]; then
+  mkdir -p ${COMMON_NOTES_DIR}
+  echo "[] Do stuff" > ${FILE}
+  create_symlink_from_file ${FILE}
+  echo ${FILE}
+  exit
 fi
-FILE=${NOTES_DIR}/${COMMON_TODAY_DATE}.${COMMON_NOTES_EXTENSION}
 
 if ! [ -r ${FILE} ]; then
   YESTERDAYS_LEFT_OVER=$(./get_previous_notes.sh)
